@@ -13,29 +13,15 @@ func getEnvironmentVars() []string {
 		fmt.Sprintf("PATH=%s", os.Getenv("PATH")),
 	}
 
-	hasHostKeyCheckingFlag := false
-
 	for _, e := range util.Config.ForwardedEnvVars {
 		v := os.Getenv(e)
 		if v != "" {
 			res = append(res, fmt.Sprintf("%s=%s", e, v))
 		}
-
-		if e == "ANSIBLE_HOST_KEY_CHECKING" {
-			hasHostKeyCheckingFlag = true
-		}
 	}
 
 	for k, v := range util.Config.EnvVars {
 		res = append(res, fmt.Sprintf("%s=%s", k, v))
-
-		if k == "ANSIBLE_HOST_KEY_CHECKING" {
-			hasHostKeyCheckingFlag = true
-		}
-	}
-
-	if !hasHostKeyCheckingFlag {
-		res = append(res, "ANSIBLE_HOST_KEY_CHECKING=False")
 	}
 
 	return res

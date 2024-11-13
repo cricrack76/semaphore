@@ -36,7 +36,6 @@ func TestGetEnvironmentVars(t *testing.T) {
 	expected := []string{
 		"SEMAPHORE_TEST=test123",
 		"ANSIBLE_FORCE_COLOR=False",
-		"ANSIBLE_HOST_KEY_CHECKING=False",
 		"PATH=",
 	}
 
