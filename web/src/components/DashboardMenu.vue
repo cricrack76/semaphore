@@ -27,7 +27,7 @@ export default {
   mixins: [PermissionsCheck],
 
   props: {
-    projectId: String,
+    projectId: Number,
     projectType: String,
     canUpdateProject: Boolean,
   },

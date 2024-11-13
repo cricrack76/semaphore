@@ -203,7 +203,7 @@ export default {
   props: {
     webHost: String,
     version: String,
-    projectId: String,
+    projectId: Number,
     premiumFeatures: Object,
   },
 
@@ -293,7 +293,7 @@ semaphore runner --no-config`;
 
     getItemsUrl() {
       if (this.projectId) {
-        return `/api/projects/${this.projectId}/runners`;
+        return `/api/project/${this.projectId}/runners`;
       }
 
       return '/api/runners';
@@ -301,7 +301,7 @@ semaphore runner --no-config`;
 
     getSingleItemUrl() {
       if (this.projectId) {
-        return `/api/projects/${this.projectId}/runners/${this.itemId}`;
+        return `/api/project/${this.projectId}/runners/${this.itemId}`;
       }
 
       return `/api/runners/${this.itemId}`;
