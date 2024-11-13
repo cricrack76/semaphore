@@ -12,13 +12,13 @@ import (
 
 	"github.com/semaphoreui/semaphore/api/runners"
 
+	"github.com/gorilla/mux"
 	"github.com/semaphoreui/semaphore/api/helpers"
 	"github.com/semaphoreui/semaphore/api/projects"
 	"github.com/semaphoreui/semaphore/api/sockets"
 	"github.com/semaphoreui/semaphore/api/tasks"
 	"github.com/semaphoreui/semaphore/db"
 	"github.com/semaphoreui/semaphore/util"
-	"github.com/gorilla/mux"
 )
 
 var startTime = time.Now().UTC()
@@ -475,6 +475,9 @@ func getSystemInfo(w http.ResponseWriter, r *http.Request) {
 		"ansible":           util.AnsibleVersion(),
 		"web_host":          host,
 		"use_remote_runner": util.Config.UseRemoteRunner,
+		"features": map[string]bool{
+			"project_runners": false,
+		},
 	}
 
 	helpers.WriteJSON(w, http.StatusOK, body)
