@@ -13,7 +13,7 @@
       :to="`/project/${projectId}/settings`"
     >{{ $t('settings') }}
     </v-tab>
-    <v-tab key="activity" :to="`/project/${projectId}/runners`">
+    <v-tab key="runners" :to="`/project/${projectId}/runners`">
       {{ $t('runners') }}
       <v-chip small class="ml-1" color="purple">Pro</v-chip>
     </v-tab>
