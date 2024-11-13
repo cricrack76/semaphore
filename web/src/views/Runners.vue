@@ -1,5 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div v-if="items != null">
+
     <v-toolbar flat >
       <v-app-bar-nav-icon @click="showDrawer()"></v-app-bar-nav-icon>
       <v-toolbar-title>
@@ -131,6 +132,10 @@
       >{{ $t('newRunner') }}
       </v-btn>
     </v-toolbar>
+
+    <v-alert v-if="!premiumFeatures.project_runners" color="info">
+      This feature available only in PRO version.
+    </v-alert>
 
     <v-data-table
       :headers="headers"
@@ -287,10 +292,18 @@ semaphore runner --no-config`;
     },
 
     getItemsUrl() {
+      if (this.projectId) {
+        return `/api/projects/${this.projectId}/runners`;
+      }
+
       return '/api/runners';
     },
 
     getSingleItemUrl() {
+      if (this.projectId) {
+        return `/api/projects/${this.projectId}/runners/${this.itemId}`;
+      }
+
       return `/api/runners/${this.itemId}`;
     },
 
