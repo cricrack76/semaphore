@@ -475,7 +475,8 @@ func getSystemInfo(w http.ResponseWriter, r *http.Request) {
 		"ansible":           util.AnsibleVersion(),
 		"web_host":          host,
 		"use_remote_runner": util.Config.UseRemoteRunner,
-		"features": map[string]bool{
+
+		"premium_features": map[string]bool{
 			"project_runners": false,
 		},
 	}

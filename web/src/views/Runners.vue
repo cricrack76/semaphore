@@ -1,5 +1,18 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div v-if="items != null">
+    <v-toolbar flat >
+      <v-app-bar-nav-icon @click="showDrawer()"></v-app-bar-nav-icon>
+      <v-toolbar-title>
+        {{ $t('dashboard2') }}
+      </v-toolbar-title>
+    </v-toolbar>
+
+    <DashboardMenu
+      :project-id="projectId"
+      project-type=""
+      :can-update-project="can(USER_PERMISSIONS.updateProject)"
+    />
+
     <EditDialog
       v-model="editDialog"
       :save-button-text="itemId === 'new' ? $t('create') : $t('save')"
@@ -101,7 +114,7 @@
       @yes="deleteItem(itemId)"
     />
 
-    <v-toolbar flat>
+    <v-toolbar flat v-if="!projectId">
       <v-btn
         icon
         class="mr-4"
@@ -109,6 +122,7 @@
       >
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
+
       <v-toolbar-title>{{ $t('runners') }}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -169,11 +183,13 @@ import ItemListPageBase from '@/components/ItemListPageBase';
 import EditDialog from '@/components/EditDialog.vue';
 import RunnerForm from '@/components/RunnerForm.vue';
 import axios from 'axios';
+import DashboardMenu from '@/components/DashboardMenu.vue';
 
 export default {
   mixins: [ItemListPageBase],
 
   components: {
+    DashboardMenu,
     RunnerForm,
     YesNoDialog,
     EditDialog,
@@ -182,6 +198,8 @@ export default {
   props: {
     webHost: String,
     version: String,
+    projectId: String,
+    premiumFeatures: Object,
   },
 
   computed: {
