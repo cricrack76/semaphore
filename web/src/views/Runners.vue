@@ -133,8 +133,13 @@
       </v-btn>
     </v-toolbar>
 
-    <v-alert v-if="!premiumFeatures.project_runners" color="info">
-      This feature available only in PRO version.
+    <v-alert
+      v-if="!premiumFeatures.project_runners"
+      type="info"
+      text
+      style="border-radius: 0;"
+    >
+      This feature available only in <v-chip small color="purple">PRO</v-chip> version.
     </v-alert>
 
     <v-data-table
