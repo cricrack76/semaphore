@@ -140,6 +140,7 @@
       style="border-radius: 0;"
     >
       This feature available only in <v-chip small color="purple">PRO</v-chip> version.
+      <v-btn class="ml-2" color="purple" href="https://cloud.semaphoreui.com">Upgrade</v-btn>
     </v-alert>
 
     <v-data-table
