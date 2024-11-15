@@ -137,9 +137,10 @@
       v-if="!premiumFeatures.project_runners"
       type="info"
       text
+      color="purple"
       style="border-radius: 0;"
     >
-      This feature available only in <v-chip small color="purple">PRO</v-chip> version.
+      Project Runners available only in <b>PRO</b> version.
       <v-btn
         class="ml-2"
         color="purple"
