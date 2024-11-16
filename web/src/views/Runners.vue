@@ -137,14 +137,14 @@
       v-if="!premiumFeatures.project_runners"
       type="info"
       text
-      color="purple"
+      color="hsl(348deg, 86%, 61%)"
       style="border-radius: 0;"
     >
       Project Runners available only in <b>PRO</b> version.
       <v-btn
         class="ml-2"
-        color="purple"
-        href="https://cloud.semaphoreui.com/auth/login?new_project=premium"
+        color="hsl(348deg, 86%, 61%)"
+        href="https://semaphoreui.com/pro"
       >Upgrade</v-btn>
     </v-alert>
 
